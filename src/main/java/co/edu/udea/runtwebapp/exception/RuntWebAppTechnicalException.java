@@ -2,7 +2,6 @@ package co.edu.udea.runtwebapp.exception;
 
 import org.apache.log4j.Logger;
 
-
 /**
  * Clase que define una excepci&oacute;n gen&eacute;rica que ser&aacute; lanzada
  * en la capa de persistencia de la aplicaci&oacute;n. Esta excepci&oacute;n
