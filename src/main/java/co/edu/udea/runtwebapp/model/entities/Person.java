@@ -103,9 +103,7 @@ public class Person implements Serializable {
 				BasicDBList basicDBbList = (BasicDBList) dbObject.get(VEHICLES);
 				person.setVehicles(new ArrayList<Vehicle>());
 				for (Object object : basicDBbList) {
-					// TODO Descomentar
-					// person.getVehicles().add(Vehicle.entityFromDBObject((BasicDBObject)
-					// object));
+					person.getVehicles().add(Vehicle.entityFromDBObject((BasicDBObject) object));
 				}
 			}
 
@@ -153,8 +151,7 @@ public class Person implements Serializable {
 			BasicDBList basicDBList = new BasicDBList();
 
 			for (Vehicle vehicle : this.getVehicles()) {
-				// TODO Descomentar
-				// basicDBList.add(vehicle.entityToDBObject());
+				basicDBList.add(vehicle.entityToDBObject());
 			}
 
 			basicDBObject.put(VEHICLES, basicDBList);

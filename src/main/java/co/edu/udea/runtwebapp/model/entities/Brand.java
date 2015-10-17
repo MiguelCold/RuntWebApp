@@ -2,9 +2,19 @@ package co.edu.udea.runtwebapp.model.entities;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+
 public class Brand implements Serializable{
 
 	private static final long serialVersionUID = -809411911029084501L;
+	private static String ID = "_id";
+	private static String CODE = "code";
+	private static String NAME = "name";
+	
+	private String id;
 	private String code;
 	private String name;
 
@@ -16,6 +26,55 @@ public class Brand implements Serializable{
 		super();
 		this.code = code;
 		this.name = name;
+	}
+
+	public static Brand entityFromDBObject(DBObject dbObject) {
+		Brand brand = null;
+		if (dbObject != null) {
+			brand = new Brand();
+
+			if (dbObject.containsField(ID)) {
+				brand.setId(dbObject.get(ID).toString().trim());
+			}
+
+			if (dbObject.containsField(CODE)) {
+				brand.setCode((String) dbObject.get(CODE));
+			}
+
+			if (dbObject.containsField(NAME)) {
+				brand.setName((String) dbObject.get(NAME));
+			}
+
+		}
+
+		return brand;
+	}
+
+	public BasicDBObject entityToDBObject() {
+		BasicDBObject basicDBObject = new BasicDBObject();
+
+		if (null != this.getId() && !("").equals(this.getId().trim())) {
+			basicDBObject.put(ID, new ObjectId(this.getId().trim()));
+		}
+
+		if (null != this.getCode()) {
+			basicDBObject.put(CODE, this.getCode());
+		}
+
+		if (null != this.getName()) {
+			basicDBObject.put(NAME, this.getName());
+		}
+		
+		return basicDBObject;
+	}
+
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCode() {
