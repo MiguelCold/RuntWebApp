@@ -18,15 +18,15 @@ import co.edu.udea.runtwebapp.persistence.exception.RuntWebAppPersistenceBusines
 public class PersonDAOImpl implements IPersonDAO {
 
 	private static final String PERSON_COLLECTION_NAME = "person";
-	private static final String ID = "_id";
-	private static String DOCUMENT_TYPE = "email";
-	private static String ID_NUMBER = "cars";
-	private static String NAME = "password";
-	private static String lASTNAME = "Users";
-	private static String BIRTHDATE;
-	private static String EMAIL;
-	private static String LICENSE_NUMBER;
-	private static String VEHICLES;
+//	private static final String ID = "_id";
+	private static String DOCUMENT_TYPE = "document_type";
+	private static String ID_NUMBER = "id_number";
+//	private static String NAME = "name";
+//	private static String lASTNAME = "lastname";
+//	private static String BIRTHDATE = "birthdate";
+//	private static String EMAIL = "email";
+//	private static String LICENSE_NUMBER = "license_number";
+//	private static String VEHICLES = "vehicle";
 
 	private static IPersonDAO instance;
 	private DBCollection collection;
@@ -58,11 +58,10 @@ public class PersonDAOImpl implements IPersonDAO {
 								PersonDAOImpl.class.getSimpleName(), "find",
 						String.class.getSimpleName()));
 			} else {
-				BasicDBObject projection = new BasicDBObject(ID_NUMBER, 0);
 				BasicDBObject query = new BasicDBObject();
 				query.put(DOCUMENT_TYPE, documentType);
 				query.put(ID_NUMBER, idNumber);
-				DBObject dbObject = this.collection.findOne(query, projection);
+				DBObject dbObject = this.collection.findOne(query);
 
 				return (dbObject == null) ? null : Person
 						.entityFromDBObject(dbObject);
@@ -72,7 +71,7 @@ public class PersonDAOImpl implements IPersonDAO {
 					String.format(
 							"Clase %s: método %s. Se presentó un error inesperado.\n%s",
 							PersonDAOImpl.class.getSimpleName(),
-							"findByEmailAndPassword", e));
+							"find", e));
 		}
 	}
 

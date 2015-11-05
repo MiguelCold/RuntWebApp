@@ -77,6 +77,7 @@ public class MongoDBConnector {
 			mongoClientURI = new MongoClientURI(SERVER);
 			mongoClient = new MongoClient(mongoClientURI);
 
+			@SuppressWarnings("deprecation")
 			DB db = mongoClient.getDB(DATA_BASE_NAME);
 			DBCollection collection = db.getCollection(collectionName);
 

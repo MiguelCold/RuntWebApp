@@ -3,6 +3,10 @@ package co.edu.udea.runtwebapp.model.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
@@ -17,12 +21,16 @@ import com.mongodb.DBObject;
  * @author Farley R&uacute;a S&uacute;arez
  * @author Miguel &Aacute;ngel Ossa Ruiz
  */
+@XmlAccessorType(value = XmlAccessType.PROPERTY)
+@XmlRootElement()
 public class State implements Serializable{
 
 	private static final long serialVersionUID = -4404003904493640657L;
 	private static String ID = "_id";
 	private static String CODE = "code";
 	private static String DESCRIPTION = "description";
+	private static String START_DATE = "start_date";
+	private static String END_DATE = "end_date";
 	
 	private String id;
 
@@ -86,6 +94,14 @@ public class State implements Serializable{
 			if (dbObject.containsField(DESCRIPTION)) {
 				state.setDescription((String) dbObject.get(DESCRIPTION));
 			}
+			
+			if (dbObject.containsField(START_DATE)) {
+				state.setStartDate((Date) dbObject.get(START_DATE));
+			}
+			
+			if (dbObject.containsField(END_DATE)) {
+				state.setEndDate((Date) dbObject.get(END_DATE));
+			}
 
 		}
 
@@ -105,6 +121,14 @@ public class State implements Serializable{
 
 		if (null != this.getDescription()) {
 			basicDBObject.put(DESCRIPTION, this.getDescription());
+		}
+		
+		if (null != this.getStartDate()) {
+			basicDBObject.put(START_DATE, this.getStartDate());
+		}
+		
+		if (null != this.getEndDate()) {
+			basicDBObject.put(END_DATE, this.getEndDate());
 		}
 		
 		return basicDBObject;
