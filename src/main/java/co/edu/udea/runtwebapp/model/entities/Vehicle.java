@@ -3,10 +3,17 @@ package co.edu.udea.runtwebapp.model.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.bson.types.ObjectId;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
+@XmlAccessorType(value = XmlAccessType.PROPERTY)
+@XmlRootElement()
 public class Vehicle implements Serializable {
 
 	private static final long serialVersionUID = 7486774537053409983L;
@@ -93,7 +100,8 @@ public class Vehicle implements Serializable {
 			}
 
 			if (dbObject.containsField(BRAND)) {
-				vehicle.setBrand((Brand) dbObject.get(BRAND));
+				vehicle.setBrand(Brand.entityFromDBObject((DBObject) dbObject
+						.get(BRAND)));
 			}
 
 			if (dbObject.containsField(MODEL)) {
@@ -109,11 +117,13 @@ public class Vehicle implements Serializable {
 			}
 
 			if (dbObject.containsField(STATE)) {
-				vehicle.setState((State) dbObject.get(STATE));
+				vehicle.setState(State.entityFromDBObject((DBObject) dbObject
+						.get(STATE)));
 			}
 
 			if (dbObject.containsField(SERVICE_TYPE)) {
-				vehicle.setServiceType((ServiceType) dbObject.get(SERVICE_TYPE));
+				vehicle.setServiceType(ServiceType.entityFromDBObject((DBObject) dbObject
+						.get(SERVICE_TYPE)));
 			}
 			
 			if (dbObject.containsField(CHASSIS_NUMBER)) {
