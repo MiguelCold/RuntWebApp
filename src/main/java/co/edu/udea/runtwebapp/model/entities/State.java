@@ -7,9 +7,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.bson.types.ObjectId;
-
-import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
 /**
@@ -108,31 +105,31 @@ public class State implements Serializable{
 		return state;
 	}
 
-	public BasicDBObject entityToDBObject() {
-		BasicDBObject basicDBObject = new BasicDBObject();
-
-		if (null != this.getId() && !("").equals(this.getId().trim())) {
-			basicDBObject.put(ID, new ObjectId(this.getId().trim()));
-		}
-
-		if (null != this.getCode()) {
-			basicDBObject.put(CODE, this.getCode());
-		}
-
-		if (null != this.getDescription()) {
-			basicDBObject.put(DESCRIPTION, this.getDescription());
-		}
-		
-		if (null != this.getStartDate()) {
-			basicDBObject.put(START_DATE, this.getStartDate());
-		}
-		
-		if (null != this.getEndDate()) {
-			basicDBObject.put(END_DATE, this.getEndDate());
-		}
-		
-		return basicDBObject;
-	}
+//	public BasicDBObject entityToDBObject() {
+//		BasicDBObject basicDBObject = new BasicDBObject();
+//
+//		if (null != this.getId() && !("").equals(this.getId().trim())) {
+//			basicDBObject.put(ID, new ObjectId(this.getId().trim()));
+//		}
+//
+//		if (null != this.getCode()) {
+//			basicDBObject.put(CODE, this.getCode());
+//		}
+//
+//		if (null != this.getDescription()) {
+//			basicDBObject.put(DESCRIPTION, this.getDescription());
+//		}
+//		
+//		if (null != this.getStartDate()) {
+//			basicDBObject.put(START_DATE, this.getStartDate());
+//		}
+//		
+//		if (null != this.getEndDate()) {
+//			basicDBObject.put(END_DATE, this.getEndDate());
+//		}
+//		
+//		return basicDBObject;
+//	}
 
 	public String getId() {
 		return id;
