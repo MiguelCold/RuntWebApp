@@ -4,9 +4,6 @@ import com.openalpr.jni.Alpr;
 import com.openalpr.jni.AlprResults;
 import java.io.IOException;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
 
 public class AlprRecognizer {
 
@@ -22,11 +19,9 @@ public class AlprRecognizer {
 		alpr.setDefaultRegion("base");
 	}
 
-	public AlprResults recognizePlate(String licensePlate) throws IOException {
-		Path path = Paths.get(licensePlate);
-		byte[] imagedata = Files.readAllBytes(path);
+	public AlprResults recognizePlate(byte[] imageData) throws IOException {
 		// Read an image into a byte array and send it to OpenALPR
-		AlprResults results = alpr.recognize(imagedata);
+		AlprResults results = alpr.recognize(imageData);
 		alpr.unload();
 		return results;
 	}
