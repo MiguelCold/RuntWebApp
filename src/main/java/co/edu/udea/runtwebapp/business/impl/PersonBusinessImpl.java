@@ -1,9 +1,14 @@
 package co.edu.udea.runtwebapp.business.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.udea.runtwebapp.business.IPersonBusiness;
 import co.edu.udea.runtwebapp.business.exception.RuntWebAppBusinessException;
 import co.edu.udea.runtwebapp.model.entities.Person;
+import co.edu.udea.runtwebapp.model.entities.Vehicle;
 import co.edu.udea.runtwebapp.persistence.dao.impl.PersonDAOImpl;
+import co.edu.udea.runtwebapp.persistence.dao.impl.VehicleDAOImpl;
 
 public class PersonBusinessImpl implements IPersonBusiness{
 
@@ -28,8 +33,8 @@ public class PersonBusinessImpl implements IPersonBusiness{
 					|| idNumber.trim().isEmpty()) {
 				throw new RuntWebAppBusinessException(
 						String.format(
-								"Clase %s: método %s. Los parámetros email y password, "
-										+ "ambos tipo %s, no pueden ser ni nulos ni vacíos."
+								"Clase %s: mï¿½todo %s. Los parï¿½metros email y password, "
+										+ "ambos tipo %s, no pueden ser ni nulos ni vacï¿½os."
 										+ "\n%s\n%s",
 										PersonBusinessImpl.class.getSimpleName(),
 								"findByEmailAndPassword()",
@@ -42,10 +47,45 @@ public class PersonBusinessImpl implements IPersonBusiness{
 			}
 		} catch (Exception e) {
 			throw new RuntWebAppBusinessException(String.format(
-					"Clase %s: método %s. Se ha producido un error al tratar de buscar "
+					"Clase %s: mï¿½todo %s. Se ha producido un error al tratar de buscar "
 							+ "un usuario por email y password.\n%s",
 							PersonBusinessImpl.class.getSimpleName(),
 					"findByEmailAndPassword()", e));
+		}
+	}
+
+	@Override
+	public Person findByCarriagePlate(String carriagePlate)
+			throws RuntWebAppBusinessException {
+	
+		try {
+			if (null == carriagePlate || carriagePlate.trim().isEmpty() 
+					|| "".equals(carriagePlate)) {
+				throw new RuntWebAppBusinessException(
+						String.format(
+								"Clase %s: mÃ©todo %s. El parÃ¡metro carriagePlate, "
+										+ "de tipo %s, no puede ser nulo ni vacÃ­o."
+										+ "\n%s\n%s",
+										PersonBusinessImpl.class.getSimpleName(),
+								"findByCarriagePlate()",
+								String.class.getSimpleName(), carriagePlate.toString()));
+			} else {
+
+				Vehicle vehicle = null;
+				vehicle = VehicleDAOImpl.getInstance().find(carriagePlate);
+				Person person = new Person();
+				person = PersonDAOImpl.getInstance().findByCarriagePlate(carriagePlate);
+				List<Vehicle> vehicles = new ArrayList<Vehicle>();
+				vehicles.add(vehicle);
+				person.setVehicles(vehicles);
+				return person;
+			}
+		} catch (Exception e) {
+			throw new RuntWebAppBusinessException(String.format(
+					"Clase %s: mÃ©todo %s. Se ha producido un error al tratar de buscar "
+							+ "un usuario por la placa de un vehÃ­culo.\n%s",
+							PersonBusinessImpl.class.getSimpleName(),
+					"findByCarriagePlate()", e));
 		}
 	}
 

@@ -7,4 +7,6 @@ public interface IPersonBusiness {
 	
 	public Person find(String documentType, String idNumber) throws RuntWebAppBusinessException;
 
+	public Person findByCarriagePlate(String carriagePlate) throws RuntWebAppBusinessException;
+
 }

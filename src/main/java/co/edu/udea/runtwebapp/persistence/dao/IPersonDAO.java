@@ -12,7 +12,7 @@ public interface IPersonDAO {
 	public Person find(String documentType, String idNumber) throws RuntWebAppDAOException,
 			RuntWebAppPersistenceBusinessException;
 
-	public Person findByEmail(String email)throws RuntWebAppDAOException,
+	public Person findByCarriagePlate(String carriagePlate)throws RuntWebAppDAOException,
 			RuntWebAppPersistenceBusinessException;
 
 	public Person insert(Person person) throws RuntWebAppDAOException,

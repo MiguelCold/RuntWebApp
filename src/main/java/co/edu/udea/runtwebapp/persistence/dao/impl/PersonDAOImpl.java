@@ -18,6 +18,8 @@ import co.edu.udea.runtwebapp.persistence.exception.RuntWebAppPersistenceBusines
 public class PersonDAOImpl implements IPersonDAO {
 
 	private static final String PERSON_COLLECTION_NAME = "person";
+	private static String VEHICLE = "vehicle";
+	private static String CARRIAGE_PLATE = "carriage_plate";
 //	private static final String ID = "_id";
 	private static String DOCUMENT_TYPE = "document_type";
 	private static String ID_NUMBER = "id_number";
@@ -53,8 +55,8 @@ public class PersonDAOImpl implements IPersonDAO {
 			if (null == documentType || ("").equals(documentType.trim()) || null == idNumber
 					|| ("").equals(idNumber.trim())) {
 				throw new RuntWebAppPersistenceBusinessException(String.format(
-						"Clase %s: método %s. Los parámetros documentType o idNumber (ambos de tipo %s) "
-								+ "no pueden ser ni nulos ni vacíos.",
+						"Clase %s: mï¿½todo %s. Los parï¿½metros documentType o idNumber (ambos de tipo %s) "
+								+ "no pueden ser ni nulos ni vacï¿½os.",
 								PersonDAOImpl.class.getSimpleName(), "find",
 						String.class.getSimpleName()));
 			} else {
@@ -69,17 +71,41 @@ public class PersonDAOImpl implements IPersonDAO {
 		} catch (Exception e) {
 			throw new RuntWebAppDAOException(
 					String.format(
-							"Clase %s: método %s. Se presentó un error inesperado.\n%s",
+							"Clase %s: mï¿½todo %s. Se presentï¿½ un error inesperado.\n%s",
 							PersonDAOImpl.class.getSimpleName(),
 							"find", e));
 		}
 	}
 
 	@Override
-	public Person findByEmail(String email) throws RuntWebAppDAOException,
+	public Person findByCarriagePlate(String carriagePlate) throws RuntWebAppDAOException,
 			RuntWebAppPersistenceBusinessException {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {
+			if (null == carriagePlate || carriagePlate.trim().isEmpty() || "".equals(carriagePlate)) {
+				throw new RuntWebAppPersistenceBusinessException(
+						String.format(
+								"Clase %s: mÃ©todo %s. El parÃ¡metro vehicle"
+										+ ", no puede ser nulo ni vacÃ­o."
+										+ "\n%s\n%s",
+										PersonDAOImpl.class.getSimpleName(),
+								"findByCarriagePlate()",
+								String.class.getSimpleName()));
+			} else {
+				BasicDBObject query = new BasicDBObject();
+				query.put(VEHICLE+"."+CARRIAGE_PLATE, carriagePlate);
+				DBObject dbObject = this.collection.findOne(query);
+
+				return (dbObject == null) ? null : Person
+						.entityFromDBObject(dbObject);
+			}
+		} catch (Exception e) {
+			throw new RuntWebAppDAOException(
+					String.format(
+							"Clase %s: mÃ©todo %s. Se presentÃ³ un error inesperado.\n%s",
+							PersonDAOImpl.class.getSimpleName(),
+							"findByVehicle", e));
+		}
 	}
 
 	@Override
