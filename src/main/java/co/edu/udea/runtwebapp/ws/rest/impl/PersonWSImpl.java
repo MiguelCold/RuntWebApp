@@ -18,7 +18,7 @@ import co.edu.udea.runtwebapp.ws.rest.util.ResponseMessage;
 @Path(value = RESTFulWebServicesContract.PersonWebServicesContract.ROOT_PATH)
 public class PersonWSImpl implements IPersonWS{
 	
-	private static final String NO_PERSON = "No se encontró el usuario con "
+	private static final String NO_PERSON = "No se encontrï¿½ el usuario con "
 			+ "los datos especificados";
 
 	@Path(value = "/{"
@@ -27,7 +27,7 @@ public class PersonWSImpl implements IPersonWS{
 			+ RESTFulWebServicesContract.PersonWebServicesContract.ID_NUMBER_PARAM
 			+ "}")
 	@GET()
-	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	@Produces(MediaType.APPLICATION_JSON)
 	@Override()
 	public Response find(
 			@PathParam(value = RESTFulWebServicesContract.PersonWebServicesContract.DOCUMENT_TYPE_PARAM) String documentType,

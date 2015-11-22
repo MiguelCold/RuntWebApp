@@ -9,8 +9,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.bson.types.ObjectId;
-
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -119,53 +117,53 @@ public class Person implements Serializable {
 		return person;
 	}
 
-	public BasicDBObject entityToDBObject() {
-		BasicDBObject basicDBObject = new BasicDBObject();
-
-		if (null != this.getId() && !("").equals(this.getId().trim())) {
-			basicDBObject.put(ID, new ObjectId(this.getId().trim()));
-		}
-
-		if (null != this.getDocumentType()) {
-			basicDBObject.put(DOCUMENT_TYPE, this.getDocumentType());
-		}
-
-		if (null != this.getIdNumber()) {
-			basicDBObject.put(ID_NUMBER, this.getIdNumber());
-		}
-
-		if (null != this.getName()) {
-			basicDBObject.put(NAME, this.getName());
-		}
-
-		if (null != this.getLastName()) {
-			basicDBObject.put(LASTNAME, this.getLastName());
-		}
-
-		if (null != this.getBirthDate()) {
-			basicDBObject.put(BIRTHDATE, this.getBirthDate());
-		}
-
-		if (null != this.getEmail()) {
-			basicDBObject.put(EMAIL, this.getEmail());
-		}
-
-		if (null != this.getLicenseNumber()) {
-			basicDBObject.put(LICENSE_NUMBER, this.getLicenseNumber());
-		}
-
-		if (null != this.getVehicles() && !this.getVehicles().isEmpty()) {
-			BasicDBList basicDBList = new BasicDBList();
-
-			for (Vehicle vehicle : this.getVehicles()) {
-				basicDBList.add(vehicle.entityToDBObject());
-			}
-
-			basicDBObject.put(VEHICLES, basicDBList);
-		}
-
-		return basicDBObject;
-	}
+//	public BasicDBObject entityToDBObject() {
+//		BasicDBObject basicDBObject = new BasicDBObject();
+//
+//		if (null != this.getId() && !("").equals(this.getId().trim())) {
+//			basicDBObject.put(ID, new ObjectId(this.getId().trim()));
+//		}
+//
+//		if (null != this.getDocumentType()) {
+//			basicDBObject.put(DOCUMENT_TYPE, this.getDocumentType());
+//		}
+//
+//		if (null != this.getIdNumber()) {
+//			basicDBObject.put(ID_NUMBER, this.getIdNumber());
+//		}
+//
+//		if (null != this.getName()) {
+//			basicDBObject.put(NAME, this.getName());
+//		}
+//
+//		if (null != this.getLastName()) {
+//			basicDBObject.put(LASTNAME, this.getLastName());
+//		}
+//
+//		if (null != this.getBirthDate()) {
+//			basicDBObject.put(BIRTHDATE, this.getBirthDate());
+//		}
+//
+//		if (null != this.getEmail()) {
+//			basicDBObject.put(EMAIL, this.getEmail());
+//		}
+//
+//		if (null != this.getLicenseNumber()) {
+//			basicDBObject.put(LICENSE_NUMBER, this.getLicenseNumber());
+//		}
+//
+//		if (null != this.getVehicles() && !this.getVehicles().isEmpty()) {
+//			BasicDBList basicDBList = new BasicDBList();
+//
+//			for (Vehicle vehicle : this.getVehicles()) {
+//				basicDBList.add(vehicle.entityToDBObject());
+//			}
+//
+//			basicDBObject.put(VEHICLES, basicDBList);
+//		}
+//
+//		return basicDBObject;
+//	}
 
 	public String getId() {
 		return id;
