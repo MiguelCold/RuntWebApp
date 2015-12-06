@@ -42,8 +42,8 @@ public class MongoDBConnector {
 		} catch (MongoException | NullPointerException e) {
 			throw new RuntWebAppTechnicalException(
 					String.format(
-							"Clase %s: mÈtodo %s. Se produjo una excepciÛn al tratar de conectarse"
-									+ " a la base de datos o al tratar de obtener la respectiva coleccion.\n%s",
+							"Clase %s: m√©todo %s. Se produjo una excepci√≥n al tratar de conectarse"
+									+ " a la base de datos o al tratar de obtener la respectiva colecci√≥n.\n%s",
 							MongoDBConnector.class.getSimpleName(),
 							"connect()", e));
 		}

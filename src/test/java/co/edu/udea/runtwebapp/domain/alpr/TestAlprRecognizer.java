@@ -42,7 +42,7 @@ public class TestAlprRecognizer {
      */
     @Test
     public void testRecognizePlate() throws Exception {
-    	String licensePlate = "C:/carro (1).jpg";
+    	String licensePlate = "C:/Plate.jpg";
     	Path path = Paths.get(licensePlate);
 		byte[] imageData = Files.readAllBytes(path);
         AlprRecognizer alprRecognizer= new AlprRecognizer();
@@ -50,8 +50,8 @@ public class TestAlprRecognizer {
         List<AlprPlateResult> list= alprResults.getPlates();
         
         for (AlprPlateResult plate  : list) {
-            if (plate.getBestPlate().getCharacters().equals("MIV792")) {
-                assertEquals(plate.getBestPlate().getCharacters(), "MIV792");
+            if (plate.getBestPlate().getCharacters().equals("FAK579")) {
+                assertEquals(plate.getBestPlate().getCharacters(), "FAK579");
                 return;
             }
         }
