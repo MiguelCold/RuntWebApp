@@ -24,7 +24,7 @@ public class VehicleDAOImplTest {
 			RuntWebAppPersistenceBusinessException,
 			RuntWebAppTechnicalException, UnknownHostException {
 		
-		String carriagePlate = "FAK579";
+		String carriagePlate = "MIV792";
 
 		IVehicleDAO vehicleDAO = VehicleDAOImpl.getInstance();
 		Vehicle vehicle = vehicleDAO.find(carriagePlate);

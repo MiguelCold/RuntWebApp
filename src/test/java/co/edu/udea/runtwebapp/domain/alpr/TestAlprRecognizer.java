@@ -50,8 +50,8 @@ public class TestAlprRecognizer {
         List<AlprPlateResult> list= alprResults.getPlates();
         
         for (AlprPlateResult plate  : list) {
-            if (plate.getBestPlate().getCharacters().equals("FAK579")) {
-                assertEquals(plate.getBestPlate().getCharacters(), "FAK579");
+            if (plate.getBestPlate().getCharacters().equals("MIV792")) {
+                assertEquals(plate.getBestPlate().getCharacters(), "MIV792");
                 return;
             }
         }

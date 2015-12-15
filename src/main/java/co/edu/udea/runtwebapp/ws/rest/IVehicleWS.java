@@ -9,6 +9,6 @@ public interface IVehicleWS {
 //	public Response find(String carriagePlate)
 //			throws RuntWebAppWSException;
 	
-	public Response find(byte[] imageData)
+	public Response find(String carriagePlate)
 			throws RuntWebAppWSException, Exception;
 }
