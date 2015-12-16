@@ -12,8 +12,8 @@ public class AlprRecognizer {
 
 	public AlprRecognizer() {
 		country = "co";
-		configfile = "openalpr.conf";
-		runtimeDataDir = "runtime_data/";
+		configfile = "C:/openalpr.conf";
+		runtimeDataDir = "C:/runtime_data";
 		alpr = new Alpr(country, configfile, runtimeDataDir);
 		alpr.setTopN(10);
 		alpr.setDefaultRegion("base");

@@ -16,9 +16,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TestAlprRecognizer {
+public class TestAlprRecognizer1 {
 
-	public TestAlprRecognizer() {
+	public TestAlprRecognizer1() {
     }
     
     @BeforeClass
