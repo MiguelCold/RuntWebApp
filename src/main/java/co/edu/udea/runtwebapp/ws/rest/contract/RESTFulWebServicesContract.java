@@ -27,11 +27,6 @@ public class RESTFulWebServicesContract {
 	public static final class VehicleWebServicesContract {
 
 		/*
-		 * Parameteres
-		 */
-		public static final String CARRIAGE_PLATE = "carriagePlate";
-
-		/*
 		 * Paths
 		 */
 		public static final String ROOT_PATH = "/vehicle";
