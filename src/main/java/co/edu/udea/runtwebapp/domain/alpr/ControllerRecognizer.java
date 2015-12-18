@@ -10,17 +10,11 @@ public class ControllerRecognizer {
 	public ControllerRecognizer() {
     }
     
-    public String recognizePlate(byte[] imageData) throws Exception {
+    public List<AlprPlateResult> recognizePlate(byte[] imageData) throws Exception {
     	
         AlprRecognizer alprRecognizer= new AlprRecognizer();
         AlprResults alprResults=alprRecognizer.recognizePlate(imageData);
         List<AlprPlateResult> list= alprResults.getPlates();
-        
-        for (AlprPlateResult plate  : list) {
-            if (plate.getBestPlate().getCharacters().equals("MIV792")) {
-                return plate.getBestPlate().getCharacters();
-            }
-        }
-        return "";
+        return list;
     }
 }

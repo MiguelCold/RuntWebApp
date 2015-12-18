@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.net.UnknownHostException;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import co.edu.udea.runtwebapp.exception.RuntWebAppTechnicalException;
@@ -20,7 +19,6 @@ public class VehicleDAOImplTest {
 
 	}
 	
-	@Ignore
 	@Test
 	public void testFind() throws RuntWebAppDAOException,
 			RuntWebAppPersistenceBusinessException,

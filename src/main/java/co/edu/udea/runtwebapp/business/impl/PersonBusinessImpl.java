@@ -73,11 +73,13 @@ public class PersonBusinessImpl implements IPersonBusiness{
 
 				Vehicle vehicle = null;
 				vehicle = VehicleDAOImpl.getInstance().find(carriagePlate);
-				Person person = new Person();
+				Person person = null;
 				person = PersonDAOImpl.getInstance().findByCarriagePlate(carriagePlate);
 				List<Vehicle> vehicles = new ArrayList<Vehicle>();
-				vehicles.add(vehicle);
-				person.setVehicles(vehicles);
+				if(vehicle != null && person != null){
+					vehicles.add(vehicle);
+					person.setVehicles(vehicles);
+				}
 				return person;
 			}
 		} catch (Exception e) {
