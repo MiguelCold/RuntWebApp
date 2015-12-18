@@ -33,6 +33,8 @@ public class Vehicle implements Serializable {
 	private static String MOTOR_NUMBER = "motor_number";
 	private static String BODY_TYPE = "body_type";
 	private static String REGISTER_DATE = "register_date";
+	private static String MECHANICAL_TECHNO = "mechanical_techno";
+	private static String SOAT = "soat";
 	
 	private String id;
 	private String carriagePlate;
@@ -52,6 +54,8 @@ public class Vehicle implements Serializable {
 	private String motorNumber;
 	private String bodyType;
 	private Date registerDate;
+	private Date mechanicalTechno;
+	private Date soat;
 
 	public Vehicle() {
 		super();
@@ -62,7 +66,7 @@ public class Vehicle implements Serializable {
 			ServiceType serviceType, String chassisNumber,
 			String cylinderCapacity, String fuelType, String trafficAuthority,
 			String classic, String line, String color, String motorNumber,
-			String bodyType, Date registerDate) {
+			String bodyType, Date registerDate, Date mechanicalTechno, Date soat) {
 		super();
 		this.carriagePlate = carriagePlate;
 		this.brand = brand;
@@ -81,6 +85,8 @@ public class Vehicle implements Serializable {
 		this.motorNumber = motorNumber;
 		this.bodyType = bodyType;
 		this.registerDate = registerDate;
+		this.mechanicalTechno = mechanicalTechno;
+		this.soat = soat;
 	}
 	
 	public static Vehicle entityFromDBObject(DBObject dbObject) {
@@ -162,89 +168,19 @@ public class Vehicle implements Serializable {
 			if (dbObject.containsField(REGISTER_DATE)) {
 				vehicle.setRegisterDate((Date) dbObject.get(REGISTER_DATE));
 			}
+			
+			if (dbObject.containsField(MECHANICAL_TECHNO)) {
+				vehicle.setMechanicalTechno((Date) dbObject.get(MECHANICAL_TECHNO));
+			}
+			
+			if (dbObject.containsField(SOAT)) {
+				vehicle.setSoat((Date) dbObject.get(SOAT));
+			}
 		}
 
 		return vehicle;
 	}
-
-//	public BasicDBObject entityToDBObject() {
-//		BasicDBObject basicDBObject = new BasicDBObject();
-//
-//		if (null != this.getId() && !("").equals(this.getId().trim())) {
-//			basicDBObject.put(ID, new ObjectId(this.getId().trim()));
-//		}
-//
-//		if (null != this.getCarriagePlate()) {
-//			basicDBObject.put(CARRIAGE_PLATE, this.getCarriagePlate());
-//		}
-//
-//		if (null != this.getBrand()) {
-//			basicDBObject.put(BRAND, this.getBrand());
-//		}
-//
-//		if (null != this.getModel()) {
-//			basicDBObject.put(MODEL, this.getModel());
-//		}
-//
-//		if (null != this.getSerialNumber()) {
-//			basicDBObject.put(SERIAL_NUMBER, this.getSerialNumber());
-//		}
-//
-//		if (null != this.getClassType()) {
-//			basicDBObject.put(CLASS_TYPE, this.getClassType());
-//		}
-//
-//		if (null != this.getState()) {
-//			basicDBObject.put(STATE, this.getState());
-//		}
-//
-//		if (null != this.getServiceType()) {
-//			basicDBObject.put(SERVICE_TYPE, this.getServiceType());
-//		}
-//		
-//		if (null != this.getChassisNumber()) {
-//			basicDBObject.put(CHASSIS_NUMBER, this.getChassisNumber());
-//		}
-//		
-//		if (null != this.getCylinderCapacity()) {
-//			basicDBObject.put(CYLINDER_CAPACITY, this.getCylinderCapacity());
-//		}
-//		
-//		if (null != this.getFuelType()) {
-//			basicDBObject.put(FUEL_TYPE, this.getFuelType());
-//		}
-//		
-//		if (null != this.getTrafficAuthority()) {
-//			basicDBObject.put(TRAFFIC_AUTHORITY, this.getTrafficAuthority());
-//		}
-//
-//		if (null != this.getClassic()) {
-//			basicDBObject.put(CLASSIC, this.getClassic());
-//		}
-//		
-//		if (null != this.getLine()) {
-//			basicDBObject.put(LINE, this.getLine());
-//		}
-//		
-//		if (null != this.getColor()) {
-//			basicDBObject.put(COLOR, this.getColor());
-//		}
-//		
-//		if (null != this.getMotorNumber()) {
-//			basicDBObject.put(MOTOR_NUMBER, this.getMotorNumber());
-//		}
-//		
-//		if (null != this.getBodyType()) {
-//			basicDBObject.put(BODY_TYPE, this.getBodyType());
-//		}
-//		
-//		if (null != this.getRegisterDate()) {
-//			basicDBObject.put(REGISTER_DATE, this.getRegisterDate());
-//		}
-//		
-//		return basicDBObject;
-//	}
-
+	
 	public String getId() {
 		return id;
 	}
@@ -389,4 +325,19 @@ public class Vehicle implements Serializable {
 		this.registerDate = registerDate;
 	}
 
+	public Date getMechanicalTechno() {
+		return mechanicalTechno;
+	}
+
+	public void setMechanicalTechno(Date mechanicalTechno) {
+		this.mechanicalTechno = mechanicalTechno;
+	}
+
+	public Date getSoat() {
+		return soat;
+	}
+
+	public void setSoat(Date soat) {
+		this.soat = soat;
+	}
 }
