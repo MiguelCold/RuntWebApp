@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.net.UnknownHostException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import co.edu.udea.runtwebapp.exception.RuntWebAppTechnicalException;
@@ -20,6 +21,7 @@ public class PersonDAOImplTest {
 		//PropertyConfigurator.configure("log4j.properties");
 	}
 	
+	@Ignore
 	@Test
 	public void testFind() throws RuntWebAppDAOException,
 			RuntWebAppPersistenceBusinessException,

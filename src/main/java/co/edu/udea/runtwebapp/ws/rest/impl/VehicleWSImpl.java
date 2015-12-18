@@ -26,14 +26,14 @@ public class VehicleWSImpl implements IVehicleWS {
 			+ "los datos especificados";
 	
 	@POST
-	@Consumes("application/json")
+	@Consumes("*/*")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override()
-	public Response find(JSONObject imageData)
+	public Response find(String imageData)
 			throws RuntWebAppWSException, Exception{
 		
-		String imageText = (String)imageData.get("imageData");
-		byte [] imageData2 = imageText.getBytes();
+		//String imageText = (String)imageData.get("imageData");
+		byte [] imageData2 = imageData.getBytes();
 		ControllerRecognizer alprRecognizer = new ControllerRecognizer();
 		String carriagePlate = alprRecognizer.recognizePlate(imageData2);
 		
